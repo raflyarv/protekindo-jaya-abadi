@@ -1,11 +1,29 @@
 'use client';
-import { Navbar, Container, Nav, NavDropdown, Button, Card, Row, Col, Form } from 'react-bootstrap';
+import {
+  Navbar,
+  Container,
+  Nav,
+  NavDropdown,
+  Button,
+  Card,
+  Row,
+  Col,
+  Form,
+  Carousel,
+  CarouselCaption,
+} from 'react-bootstrap';
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import { HomeItemCard } from './_shared/_components';
 import Link from 'next/link';
 
 export default function Home() {
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex: number) => {
+    setIndex(selectedIndex);
+  };
+
   return (
     <main className="h-100 overflow-hidden">
       <Navbar
@@ -79,7 +97,7 @@ export default function Home() {
 
       <Container
         fluid
-        className="d-flex mb-5 vh-100 align-items-center justify-content-center position-relative"
+        className="d-flex vh-100 align-items-center justify-content-center position-relative"
       >
         <Image
           src="/assets/fire-extinguisher.jpg"
@@ -94,73 +112,99 @@ export default function Home() {
         </div>
       </Container>
 
-      <Container className="w-100 mb-5 text-center">
-        <div className="mb-5">
-          <h2 className="fw-bold"> Statistik Kejadian Periode Tahun 2023 </h2>
-          <h4> *sampai bulan Desember 2023 </h4>
-        </div>
+      <Container
+        fluid
+        className="mb-5 py-5 text-center"
+        style={{ backgroundColor: 'whitesmoke' }}
+      >
+        <Container className="py-5">
+          <div className="mb-5">
+            <h2 className="fw-bold"> Statistik Kejadian Periode Tahun 2024 </h2>
+            <h4> *per bulan Agustus 2024 </h4>
+          </div>
 
-        <Row>
-          <Col
-            md={4}
-            xs={12}
-          >
-            <div>
-              <div className="mb-2">
-                <Image
-                  src="/graphics/fire.png"
-                  alt="Kebakaran"
-                  width={80}
-                  height={80}
-                  className="img-fluid mb-3"
-                />
-                <h3 className="fw-bold"> 2260+ </h3>
+          <Row>
+            <Col
+              md={4}
+              xs={12}
+              className="mb-5 mb-md-0"
+            >
+              <div className="py-3 d-flex flex-column text-center align-items-center">
+                <div className="mb-2">
+                  <Image
+                    src="/graphics/fire.png"
+                    alt="Kebakaran"
+                    width={80}
+                    height={80}
+                    className="img-fluid mb-3"
+                  />
+                  <h3 className="fw-bold"> 460 </h3>
+                </div>
+
+                <h5
+                  className="px-3 py-2 text-white"
+                  style={{ width: 'max-content', backgroundColor: 'red' }}
+                >
+                  KEJADIAN KEBAKARAN
+                </h5>
               </div>
+            </Col>
 
-              <h5> KEJADIAN KEBAKARAN </h5>
-            </div>
-          </Col>
+            <Col
+              md={4}
+              xs={12}
+              className="mb-5 mb-md-0"
+            >
+              <div className="py-3 d-flex flex-column text-center align-items-center">
+                <div className="mb-2">
+                  <Image
+                    src="/graphics/safe.png"
+                    alt="Kebakaran"
+                    width={80}
+                    height={80}
+                    className="img-fluid mb-3"
+                  />
+                  <h3 className="fw-bold"> 21 </h3>
+                </div>
 
-          <Col
-            md={4}
-            xs={12}
-          >
-            <div>
-              <div className="mb-2">
-                <Image
-                  src="/graphics/safe.png"
-                  alt="Kebakaran"
-                  width={80}
-                  height={80}
-                  className="img-fluid mb-3"
-                />
-                <h3 className="fw-bold"> 2260+ </h3>
+                <h5
+                  className="px-3 py-2 text-white"
+                  style={{ width: 'max-content', backgroundColor: 'green' }}
+                >
+                  {' '}
+                  PENYELAMATAN{' '}
+                </h5>
               </div>
+            </Col>
 
-              <h5> PENYELAMATAN </h5>
-            </div>
-          </Col>
+            <Col
+              md={4}
+              xs={12}
+              className="mb-5 mb-md-0"
+            >
+              <div className="py-3 d-flex flex-column text-center align-items-center">
+                <div className="mb-2">
+                  <Image
+                    src="/graphics/socialize.png"
+                    alt="Kebakaran"
+                    width={80}
+                    height={80}
+                    className="img-fluid mb-3"
+                  />
+                  <h3 className="fw-bold"> 20 </h3>
+                </div>
 
-          <Col
-            md={4}
-            xs={12}
-          >
-            <div>
-              <div className="mb-2">
-                <Image
-                  src="/graphics/socialize.png"
-                  alt="Kebakaran"
-                  width={80}
-                  height={80}
-                  className="img-fluid mb-3"
-                />
-                <h3 className="fw-bold"> 2260+ </h3>
+                <h5
+                  className="px-3 py-2 text-white"
+                  style={{ width: 'max-content', backgroundColor: 'blue' }}
+                >
+                  {' '}
+                  RW TERSOSIALISASI{' '}
+                </h5>
               </div>
-
-              <h5> RW TERSOSIALISASI </h5>
-            </div>
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        </Container>
       </Container>
 
       <Button
@@ -185,7 +229,159 @@ export default function Home() {
         />
       </Button>
 
-      <Container>
+      <Container className="w-100 d-flex flex-column-reverse bg-red">
+        <Container className="w-100 d-flex flex-column text-center text-md-start">
+          <h3
+            className="w-65 fw-bold mb-3 text-capitalize text-white p-3"
+            style={{
+              backgroundColor: 'red',
+            }}
+          >
+            apakah sudah ada alat pemadam api di kantor/anda ?
+          </h3>
+          <h3
+            className="fw-bold mb-3 text-capitalize text-center text-md-end text-white p-3"
+            style={{
+              backgroundColor: 'red',
+            }}
+          >
+            {' '}
+            apakah alat pemadam api anda sudah dicek dengan baik ?{' '}
+          </h3>
+          <h3
+            className="fw-bold mb-3 text-capitalize text-center text-white p-3"
+            style={{
+              backgroundColor: 'red',
+            }}
+          >
+            {' '}
+            APAKAH ANDA SUDAH MERASA AMAN ?
+          </h3>
+        </Container>
+
+        <Container className="w-70 mb-3">
+          <Carousel
+            activeIndex={index}
+            onSelect={handleSelect}
+          >
+            <Carousel.Item
+              as={Link}
+              href="https://news.detik.com/berita/d-7492580/4-rumah-di-jakbar-terbakar-16-unit-damkar-diterjunkan"
+              target="_blank"
+            >
+              <div
+                style={{
+                  width: '100%',
+                  height: '70vh',
+                }}
+              >
+                <Image
+                  src={'/news/kebakaran-jakbar.jpeg'}
+                  layout="fill"
+                  objectFit="cover"
+                  alt="Kebakaran Jakbar 2024"
+                />
+              </div>
+
+              <CarouselCaption
+                style={{
+                  background:
+                    'linear-gradient(180deg, rgba(255,255,255,0) 7%, rgba(0,0,0,0.5522584033613445) 44%)',
+                }}
+              >
+                <h3> 4 Rumah di Jakbar Terbakar, 16 Unit Damkar Diterjunkan </h3>
+                <h4>
+                  {' '}
+                  oleh Zunita Putri | <span> detikNews </span>
+                </h4>
+                <p> 16 Agustus 2024 </p>
+              </CarouselCaption>
+            </Carousel.Item>
+
+            <Carousel.Item
+              as={Link}
+              href="https://news.detik.com/berita/d-7487249/3-000-warga-terdampak-kebakaran-di-manggarai-jaksel-tak-ada-korban-jiwa"
+              target="_blank"
+            >
+              <div
+                style={{
+                  width: '100%',
+                  height: '70vh',
+                }}
+              >
+                <Image
+                  src={'/news/kebakaran-manggarai.jpeg'}
+                  layout="fill"
+                  objectFit="cover"
+                  alt="Kebakaran Manggarai 2024"
+                />
+              </div>
+
+              <CarouselCaption
+                style={{
+                  background:
+                    'linear-gradient(180deg, rgba(255,255,255,0) 7%, rgba(0,0,0,0.5522584033613445) 44%)',
+                }}
+              >
+                <h3> 3.000 Warga Terdampak Kebakaran di Manggarai Jaksel, Tak Ada Korban Jiwa </h3>
+                <h4>
+                  {' '}
+                  oleh Kurniawan Fadillah | <span> detikNews </span>
+                </h4>
+                <p> 13 Agustus 2024 </p>
+              </CarouselCaption>
+            </Carousel.Item>
+
+            <Carousel.Item
+              as={Link}
+              href="https://www.kompas.id/baca/metro/2024/08/14/kebakaran-di-penjaringan-hanguskan-120-rumah-satu-orang-tewas"
+              target="_blank"
+            >
+              <div
+                style={{
+                  width: '100%',
+                  height: '70vh',
+                }}
+              >
+                <Image
+                  src={'/news/kebakaran-penjaringan.jpg'}
+                  layout="fill"
+                  objectFit="cover"
+                  alt="Kebakaran Penjaringan 2024"
+                />
+              </div>
+
+              <CarouselCaption
+                style={{
+                  background:
+                    'linear-gradient(180deg, rgba(255,255,255,0) 7%, rgba(0,0,0,0.5522584033613445) 44%)',
+                }}
+              >
+                <h3> Kebakaran di Penjaringan Hanguskan 120 Rumah, Satu Orang Tewas </h3>
+                <h4>
+                  {' '}
+                  oleh Rhama Purna Jati | <span> Kompas </span>
+                </h4>
+                <p> 14 Agustus 2024 </p>
+              </CarouselCaption>
+            </Carousel.Item>
+          </Carousel>
+        </Container>
+
+        <Container className="w-100 text-center">
+          <h2 className="fw-bold mb-4 px-3">
+            <span
+              className="px-2 me-1 py-1"
+              style={{ backgroundColor: 'red', color: 'white' }}
+            >
+              Resiko Kebakaran Selalu Ada
+            </span>
+            di Sekitar Kita
+          </h2>
+        </Container>
+      </Container>
+
+      <Container className="py-5">
         <div className="w-100 mb-5 text-center">
           <h2 className="fw-bold"> Tipe Kebakaran yang Dapat Terjadi </h2>
           <h4>
@@ -385,7 +581,25 @@ export default function Home() {
         </Container>
       </Container>
 
-      <Container className="justify-content-center d-flex flex-column mb-5">
+      <Container className="d-flex flex-column flex-md-row align-items-center py-5">
+        <h2 className="fw-bold mb-3 mb-md-0"> Our Satisfied Clients </h2>
+        <div
+          style={{
+            width: '100%',
+            height: '500px',
+            position: 'relative',
+          }}
+        >
+          <Image
+            src="/testimony/satisfied-client.png"
+            layout="fill"
+            objectFit="cover"
+            alt="Our Satisfied Client"
+          />
+        </div>
+      </Container>
+
+      <Container className="justify-content-center d-flex flex-column mb-5 py-5">
         <div className="mb-3 text-center">
           <h2 className="fw-bold"> Hubungi Kami </h2>
           <h5 className="fw-bold"> Email: protekindojaya@gmail.com </h5>
@@ -462,7 +676,7 @@ export default function Home() {
 
       <Container
         fluid
-        className="bg-primary"
+        className="bg-primary pb-4"
         style={{ minHeight: '300px' }}
       >
         <Row className="d-flex flex-column flex-md-row justify-content-between align-items-center px-5 pt-5">
@@ -560,7 +774,10 @@ export default function Home() {
         className="w-100 d-flex align-items-center justify-content-center text-white "
         style={{ height: '50px', backgroundColor: '#034694' }}
       >
-        <h6> Copyright © CV Protekindo Jaya Abadi . All rights reserved. </h6>
+        <h6 className="text-center">
+          {' '}
+          Copyright © CV Protekindo Jaya Abadi . All rights reserved.{' '}
+        </h6>
       </Container>
     </main>
   );
