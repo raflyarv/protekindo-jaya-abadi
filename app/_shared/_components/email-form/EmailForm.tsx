@@ -10,6 +10,8 @@ const EmailForm = () => {
     message: '',
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -18,6 +20,8 @@ const EmailForm = () => {
     e.preventDefault();
 
     try {
+      setIsLoading(true);
+
       const response = await fetch('/api/mailer', {
         method: 'POST',
         headers: {
@@ -25,7 +29,6 @@ const EmailForm = () => {
         },
         body: JSON.stringify(formData),
       });
-      console.log(response);
 
       if (response.ok) {
         alert('Email berhasil dikirim!');
@@ -40,8 +43,9 @@ const EmailForm = () => {
         alert('Gagal mengirim email.');
       }
     } catch (error) {
-      console.log(error);
       alert('Terjadi kesalahan saat mengirim email.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -126,6 +130,7 @@ const EmailForm = () => {
             className="rounded px-5"
             size="lg"
             type="submit"
+            disabled={isLoading}
           >
             Submit
           </Button>

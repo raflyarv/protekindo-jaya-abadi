@@ -1,4 +1,3 @@
-import { NextApiRequest } from 'next';
 import nodemailer from 'nodemailer';
 
 export async function POST(req: Request) {
@@ -19,12 +18,12 @@ export async function POST(req: Request) {
     to: 'raflyarvmedia@gmail.com',
     subject: `[Website] Protekindo Jaya Abadi dari ${name} (${company})`,
     text: `
-            Nama: ${name}
-            Perusahaan: ${company}
-            Email: ${email}
-            Nomor Ponsel: ${phone}
-            Pesan: ${message}
-        `,
+    Nama: ${name}
+    Perusahaan: ${company}
+    Email: ${email}
+    Nomor Ponsel: ${phone}
+    Pesan: ${message}
+    `,
   };
 
   try {

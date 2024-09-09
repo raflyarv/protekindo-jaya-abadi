@@ -39,7 +39,8 @@ export default function Home() {
         >
           <Navbar.Brand
             href="#home"
-            className="w-75 d-flex align-items-center"
+            className="d-flex align-items-center"
+            style={{ width: '70%' }}
           >
             <Image
               src="/assets/logo-protekindo.png"
@@ -96,9 +97,8 @@ export default function Home() {
         <Image
           src="/assets/home-page-banner.png"
           layout="fill"
-          objectFit="cover"
           alt="fire-extinguisher"
-          className="img-fluid"
+          className="img-fluid object-fit-cover"
         />
       </Container>
 
@@ -269,8 +269,8 @@ export default function Home() {
               >
                 <Image
                   src={'/news/kebakaran-jakbar.jpeg'}
+                  className="object-fit-cover"
                   layout="fill"
-                  objectFit="cover"
                   alt="Kebakaran Jakbar 2024"
                 />
               </div>
@@ -304,7 +304,7 @@ export default function Home() {
                 <Image
                   src={'/news/kebakaran-manggarai.jpeg'}
                   layout="fill"
-                  objectFit="cover"
+                  className="object-fit-cover"
                   alt="Kebakaran Manggarai 2024"
                 />
               </div>
@@ -338,7 +338,7 @@ export default function Home() {
                 <Image
                   src={'/news/kebakaran-penjaringan.jpg'}
                   layout="fill"
-                  objectFit="cover"
+                  className="object-fit-cover"
                   alt="Kebakaran Penjaringan 2024"
                 />
               </div>
@@ -589,8 +589,8 @@ export default function Home() {
           <Image
             src="/assets/client-portfolio.png"
             layout="fill"
-            objectFit="cover"
             alt="Our Satisfied Client"
+            className="object-fit-cover"
           />
         </div>
       </Container>
