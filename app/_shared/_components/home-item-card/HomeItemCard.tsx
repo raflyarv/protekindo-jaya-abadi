@@ -21,10 +21,10 @@ const HomeItemCard = ({
 }: HomeItemCardProps) => {
   return (
     <>
-      <Col className="w-auto justify-content-center me-5">
+      <Col className="w-auto justify-content-center me-3">
         <Card
           className="justify-items-center h-auto"
-          style={{ width: '18rem' }}
+          style={{ width: '20rem' }}
         >
           <Image
             src={imagesrc}

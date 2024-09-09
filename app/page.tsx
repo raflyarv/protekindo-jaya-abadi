@@ -14,7 +14,7 @@ import {
 } from 'react-bootstrap';
 import Image from 'next/image';
 import React, { useState } from 'react';
-import { HomeItemCard } from './_shared/_components';
+import { EmailForm, HomeItemCard } from './_shared/_components';
 import Link from 'next/link';
 
 export default function Home() {
@@ -23,6 +23,9 @@ export default function Home() {
   const handleSelect = (selectedIndex: number) => {
     setIndex(selectedIndex);
   };
+
+  const phoneNumber = '681280518450';
+  const whatsappLink = `https://wa.me/${phoneNumber}`;
 
   return (
     <main className="h-100 overflow-hidden">
@@ -36,13 +39,13 @@ export default function Home() {
         >
           <Navbar.Brand
             href="#home"
-            className="w-50 d-flex align-items-center"
+            className="w-75 d-flex align-items-center"
           >
             <Image
               src="/assets/logo-protekindo.png"
               width="75"
               height="65"
-              className="d-inline-block align-top"
+              className="d-inline-block align-top me-3"
               alt="React Bootstrap logo"
             />
             <div className="w-100">
@@ -64,32 +67,22 @@ export default function Home() {
               </Nav.Link>
               <Nav.Link
                 eventKey="2"
-                href="#link"
+                href="#products"
               >
                 Produk
               </Nav.Link>
               <Nav.Link
-                eventKey="1"
+                eventKey="3"
                 href="#home"
               >
                 Sertifikasi
               </Nav.Link>
               <Nav.Link
-                eventKey="1"
-                href="#home"
+                eventKey="4"
+                href="#clients"
               >
                 Testimoni
               </Nav.Link>
-              <NavDropdown
-                title="Dropdown"
-                id="basic-nav-dropdown"
-              >
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated links</NavDropdown.Item>
-              </NavDropdown>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -98,18 +91,15 @@ export default function Home() {
       <Container
         fluid
         className="d-flex vh-100 align-items-center justify-content-center position-relative"
+        id="home"
       >
         <Image
-          src="/assets/fire-extinguisher.jpg"
+          src="/assets/home-page-banner.png"
           layout="fill"
           objectFit="cover"
           alt="fire-extinguisher"
           className="img-fluid"
         />
-        <div className="w-75 h-auto position-absolute text-white">
-          <h1> CV Protekindo Jaya Abadi </h1>
-          <h3> Your trusted fire safety equipment supplier </h3>
-        </div>
       </Container>
 
       <Container
@@ -219,6 +209,8 @@ export default function Home() {
           zIndex: '100',
         }}
         className="position-fixed shadow"
+        href={whatsappLink}
+        target="_blank"
       >
         <Image
           src="/social-media/whatsapp-logo-white.png"
@@ -232,7 +224,7 @@ export default function Home() {
       <Container className="w-100 d-flex flex-column-reverse bg-red">
         <Container className="w-100 d-flex flex-column text-center text-md-start">
           <h3
-            className="w-65 fw-bold mb-3 text-capitalize text-white p-3"
+            className="w-65 fw-bold mb-3 text-capitalize text-white text-center p-3"
             style={{
               backgroundColor: 'red',
             }}
@@ -240,7 +232,7 @@ export default function Home() {
             apakah sudah ada alat pemadam api di kantor/anda ?
           </h3>
           <h3
-            className="fw-bold mb-3 text-capitalize text-center text-md-end text-white p-3"
+            className="fw-bold mb-3 text-capitalize text-center text-white p-3"
             style={{
               backgroundColor: 'red',
             }}
@@ -474,6 +466,7 @@ export default function Home() {
       <Container
         fluid
         className="w-100 d-flex flex-column align-items-center mb-5"
+        id="products"
       >
         <div className="mb-5 text-center">
           <h4 className="fw-bold"> Biarkan Kami Membantu Anda Merasa Aman </h4>
@@ -581,8 +574,11 @@ export default function Home() {
         </Container>
       </Container>
 
-      <Container className="d-flex flex-column flex-md-row align-items-center py-5">
-        <h2 className="fw-bold mb-3 mb-md-0"> Our Satisfied Clients </h2>
+      <Container
+        fluid
+        className="d-flex flex-column flex-md-row align-items-center py-5 mx-0 px-0"
+        id="clients"
+      >
         <div
           style={{
             width: '100%',
@@ -591,7 +587,7 @@ export default function Home() {
           }}
         >
           <Image
-            src="/testimony/satisfied-client.png"
+            src="/assets/client-portfolio.png"
             layout="fill"
             objectFit="cover"
             alt="Our Satisfied Client"
@@ -604,7 +600,8 @@ export default function Home() {
           <h2 className="fw-bold"> Hubungi Kami </h2>
           <h5 className="fw-bold"> Email: protekindojaya@gmail.com </h5>
         </div>
-        <Form>
+        <EmailForm />
+        {/* <Form>
           <Form.Group className="mb-3">
             <Form.Label> Name </Form.Label>
             <Form.Control
@@ -671,108 +668,68 @@ export default function Home() {
               Submit
             </Button>
           </div>
-        </Form>
+        </Form> */}
       </Container>
 
       <Container
         fluid
-        className="bg-primary pb-4"
-        style={{ minHeight: '300px' }}
+        className="bg-primary py-4 d-flex justify-content-center px-5"
       >
-        <Row className="d-flex flex-column flex-md-row justify-content-between align-items-center px-5 pt-5">
-          <Col
-            xs={12}
-            md={4}
-            className="w-auto my-5 my-md-0 d-flex flex-column flex-md-row align-items-center"
-          >
-            <Image
-              src="/assets/logo-protekindo.png"
-              width="75"
-              height="65"
-              className="d-inline-block align-top mb-3 me-md-3"
-              alt="React Bootstrap logo"
-            />
-            <div className="w-auto text-white text-center text-md-start">
-              <h5 className="text-uppercase text-wrap fw-bold mb-0"> Protekindo Jaya Abadi </h5>
-              <h6 className="fw-semibold text-truncate">
-                {' '}
-                Your trusted fire safety equipment supplier{' '}
-              </h6>
-            </div>
-          </Col>
-
-          <Col
-            xs={12}
-            md={3}
-            className="w-auto mb-5 mb-md-0 d-flex flex-column justify-content-center"
-          >
-            <Link
-              href="#"
-              className="text-white text-decoration-none mb-3"
-            >
-              <h5> Tentang Kami </h5>
-            </Link>
-            <Link
-              className="text-white text-decoration-none mb-3"
-              href="#"
-            >
-              <h5> Produk </h5>
-            </Link>
-            <Link
-              className="text-white text-decoration-none mb-3"
-              href="#"
-            >
-              <h5> Sertifikasi </h5>
-            </Link>
-            <Link
-              className="text-white text-decoration-none"
-              href="#"
-            >
-              <h5> Testimoni </h5>
-            </Link>
-          </Col>
-
-          <Col
-            xs={12}
-            md={5}
-            className="w-60 d-flex flex-column"
-          >
-            <div className="d-flex align-items-center">
-              <i
-                className="bi bi-buildings text-white me-3"
-                style={{ fontSize: '32px' }}
-              ></i>
-              <h6 className="text-white">
-                Grand Slipi Tower Lt 5 Unit F Jl. Jend. S. Parman Kav 22 - 24 , Jakarta Barat 11480
-                || 021-5362358
-              </h6>
+        <Col
+          xs={12}
+          md={6}
+          className="d-flex flex-column justify-content-center text-white fw-semibold "
+        >
+          <div className="d-flex flex-column flex-md-row mb-3">
+            <div className="d-flex">
+              <div
+                className="mb-2 mb-md-0"
+                style={{ width: '100px' }}
+              >
+                Office
+              </div>
+              <div className="pe-3"> : </div>{' '}
             </div>
 
-            <div className="d-flex align-items-center">
-              <i
-                className="bi bi-phone text-white me-3"
-                style={{ fontSize: '32px' }}
-              ></i>
-              <h6 className="text-white"> 0877 7778 8625 / 0813 8825 4809 </h6>
+            <div>
+              Grand Slipi Tower Lt 5 Unit F Jl. Jend. S. Parman Kav 22 - 24 , Jakarta Barat 11480{' '}
             </div>
+          </div>
 
-            <div className="d-flex align-items-center">
-              <i
-                className="bi bi-person-workspace text-white me-3"
-                style={{ fontSize: '32px' }}
-              ></i>
-              <h6 className="text-white">
-                Jl. Pal Merah Utara II No.212B, RT.8/RW.16, Palmerah,Kec. Palmerah, Kota Jakarta
-                Barat, Daerah Khusus Ibukota Jakarta 11480, Indonesia
-              </h6>
+          <div className="d-flex flex-column flex-md-row mb-3">
+            <div className="d-flex">
+              <div
+                className="mb-2 mb-md-0"
+                style={{ width: '100px' }}
+              >
+                Mobile
+              </div>
+              <div className="pe-3"> : </div>{' '}
             </div>
-          </Col>
-        </Row>
+            <div>0877 7778 8625 / 0813 8825 4809</div>
+          </div>
+
+          <div className="d-flex flex-column flex-md-row mb-3">
+            <div className="d-flex">
+              <div
+                className="mb-2 mb-md-0"
+                style={{ width: '100px' }}
+              >
+                Workshop
+              </div>
+              <div className="pe-3"> : </div>{' '}
+            </div>
+            <div>
+              Jl. Pal Merah Utara II No.212B, RT.8/RW.16, Palmerah,Kec. Palmerah, Kota Jakarta
+              Barat, Daerah Khusus Ibukota Jakarta 11480, Indonesia
+            </div>
+          </div>
+        </Col>
       </Container>
       <Container
         fluid
-        className="w-100 d-flex align-items-center justify-content-center text-white "
-        style={{ height: '50px', backgroundColor: '#034694' }}
+        className="w-100 d-flex align-items-center justify-content-center text-white py-2"
+        style={{ backgroundColor: '#034694' }}
       >
         <h6 className="text-center">
           {' '}
